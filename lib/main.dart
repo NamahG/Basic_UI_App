@@ -14,13 +14,19 @@ class MyApp extends StatefulWidget
 
 class _MyAppState extends State<MyApp> {
 
-  int _currentIndex = 0;
+  int chosenIndex=0;
+  void _onItemTapped(int index) {
+    setState(() {
+      chosenIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
+          backgroundColor: Colors.white30,
           appBar: AppBar(
-            title: const Text("Orders", style: TextStyle(color: Colors.white, fontSize: 30)),
+            title: const Text("Flashcards", style: TextStyle(color: Colors.white, fontSize: 30)),
             titleSpacing: 00.0,
             centerTitle: true,
             toolbarHeight: 70,
@@ -31,7 +37,7 @@ class _MyAppState extends State<MyApp> {
                   bottomLeft: Radius.circular(20)),
             ),
             elevation: 0.00,
-            backgroundColor: Colors.blueAccent[400],
+            backgroundColor: Colors.black,
           ),
           body: GridView.builder(
             itemCount: 5,
@@ -39,7 +45,7 @@ class _MyAppState extends State<MyApp> {
                 const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemBuilder: (context, index) {
               return Card(
-                  color: Colors.blueAccent,
+                  color: Colors.black,
                   shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),
               ),
@@ -64,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                           child: Text(
                             'Text',
                             textAlign: TextAlign.left,
-                            style: TextStyle(color: Colors.brown, fontSize: 20),
+                            style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ),
                         const Padding(
@@ -72,17 +78,22 @@ class _MyAppState extends State<MyApp> {
                           child: Text(
                             'Answer',
                             textAlign: TextAlign.left,
-                            style: TextStyle(color: Colors.brown, fontSize: 20),
+                            style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0.0, 5.0, 8.0, 8.0),
-                          child: IconButton(
-                            icon: const Icon(Icons.delete, color: Colors.brown, size: 40.0),
-                            tooltip: 'Delete',
-                            onPressed: () {
-                            },
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0.0, 5.0, 8.0, 0.0),
+                              child: IconButton(
+                                icon: const Icon(Icons.delete, color: Colors.white, size: 40.0),
+                                tooltip: 'Delete',
+                                onPressed: () {
+                                },
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     )
@@ -94,26 +105,35 @@ class _MyAppState extends State<MyApp> {
               );
             },
           ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              // Add your onPressed code here!
+            },
+            backgroundColor: Colors.black,
+            child: const Icon(
+                Icons.add,
+              color: Colors.white,
+            ),
+          ),
           bottomNavigationBar: BottomNavigationBar(
-            currentIndex: _currentIndex,
-            type: BottomNavigationBarType.fixed,
-            items: [
+            items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-//                  title: Text('Home'),
-              backgroundColor: Colors.blue),
+                icon: Icon(Icons.dashboard),
+                label: 'Cards',
+                backgroundColor: Colors.black,
+              ),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.search),
-//                  title: Text('Home'),
-                  backgroundColor: Colors.blue),
+                icon: Icon(Icons.fitbit),
+                label: 'Practice',
+                backgroundColor: Colors.black,
+              ),
             ],
-            onTap: (index) {
-              setState(() {
-                _currentIndex = index;
-              });
-            }
+            currentIndex: chosenIndex,
+            selectedItemColor: Colors.blue,
+            onTap: _onItemTapped,
           ),
         ),
     );
   }
 }
+

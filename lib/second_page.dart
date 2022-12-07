@@ -6,20 +6,20 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown,
+      backgroundColor: Colors.black,
         appBar: AppBar(
-          title: const Text("Orders", style: TextStyle(color: Colors.white, fontSize: 30)),
-          titleSpacing: 00.0,
-          centerTitle: true,
+          title: const Text("Flashcards", style: TextStyle(color: Colors.white, fontSize: 30)),
           toolbarHeight: 70,
           toolbarOpacity: 1,
+          titleSpacing: 00.0,
+          centerTitle: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(20),
                 bottomLeft: Radius.circular(20)),
           ),
           elevation: 0.00,
-          backgroundColor: Colors.blueAccent[400],
+          backgroundColor: Colors.white12,
         ),
 
       body: Container(
@@ -28,10 +28,10 @@ class SecondPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(8.0, 20.0, 8.0, 8.0),
             child: SizedBox(
-              height: 400,
+              height: 300,
               width: 800,
               child: Card(
-              color: Colors.blueAccent,
+              color: Colors.white12,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
               ),
@@ -50,7 +50,7 @@ class SecondPage extends StatelessWidget {
                       width: 800,
                     ),
                     Text(
-                      'Title',
+                      'TITLE',
                       style: TextStyle(color: Colors.white, fontSize: 60),
                     ),
                   ],
@@ -59,8 +59,8 @@ class SecondPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 40,
-            width: 800,
+            height: 45,
+            width: double.infinity,
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,7 +78,7 @@ class SecondPage extends StatelessWidget {
                   }
               ),
             ],
-          )
+          ),
           ],
         ),
       )
